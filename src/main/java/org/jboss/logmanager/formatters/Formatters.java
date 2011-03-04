@@ -459,7 +459,7 @@ public final class Formatters {
                     } catch (Throwable t) {
                         // ignore
                     }
-                    if (resource == null) try {
+                    if (resource == null && exceptionClass.getClassLoader() != null) try {
                         resource = sm == null ?
                                 exceptionClass.getClassLoader().getResource(classResourceName) :
                                 AccessController.doPrivileged(new PrivilegedAction<URL>() {
